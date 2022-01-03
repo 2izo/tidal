@@ -1,0 +1,44 @@
+<h1>{{ title }}</h1>
+
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+<div class="container">
+  <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="markPosition($event)">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  </agm-map>
+  <input #name placeholder="Name" type="text" class="form-control" />
+  <button class="btn btn-success" (click)="addUser(name.value)">Submit</button>
+  <ngb-toast header="Notification header"> created </ngb-toast>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Longitude</th>
+        <th scope="col">Latitude</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of Users; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>
+          <img [src]="src(i)" class="mr-2" style="width: 20px" />
+          {{ user.username }}
+        </td>
+        <td>{{ user.lang || "zizo" }}</td>
+        <td>{{ user.lat | number }}</td>
+
+        <li class="list-inline-item">
+          <button
+            class="btn btn-primary trash"
+            (click)="delete(user)"
+            routerLink=""
+          >
+            <i class="fa fa-trash"></i>
+          </button>
+        </li>
+      </tr>
+    </tbody>
+  </table>
+</div>

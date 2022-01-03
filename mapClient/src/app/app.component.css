@@ -1,0 +1,10 @@
+agm-map {
+  height: 500px;
+}
+.form-control {
+  margin-top: 50px;
+}
+.trash {
+  background-color: red;
+  margin-right: -100px;
+}
